@@ -12,5 +12,5 @@ export const Container = styled.div`
         props.justify ? props.justify : "flex-start"};
     gap: ${(props) => (props.gap ? props.gap : "1.5rem")};
 
-    padding: 1rem;
+    padding: ${(props) => (props.section ? "2rem 1rem" : "1rem")};
 `;

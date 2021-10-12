@@ -19,14 +19,13 @@ export default function AuthContextProvider({ children }) {
         (() => {
             const user = JSON.parse(localStorage.getItem("user"));
 
-            console.log(user);
-            console.log(location);
-
             if (!user) {
                 history.push("/");
                 return;
             }
 
+            api.defaults.headers.Authorization = user.token;
+            setUser(user);
             history.push(`${location}`);
         })();
     }, [history, location]);
@@ -53,8 +52,18 @@ export default function AuthContextProvider({ children }) {
         }
     }
 
+    async function logoutUser() {
+        setAuthorized(false);
+        setUser(null);
+        api.defaults.headers.Authorization = undefined;
+        localStorage.removeItem("user");
+        history.push("/");
+    }
+
     return (
-        <AuthContext.Provider value={{ user, authorized, loginUser }}>
+        <AuthContext.Provider
+            value={{ user, authorized, loginUser, logoutUser }}
+        >
             {children}
         </AuthContext.Provider>
     );
