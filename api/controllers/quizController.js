@@ -59,4 +59,19 @@ async function getAllQuizzes(req, res) {
     }
 }
 
-module.exports = { newQuiz, getAllQuizzes };
+// play a single quiz
+async function getSingleQuiz(req, res) {
+    const quizId = req.params.id;
+    console.log(quizId);
+
+    try {
+        const quiz = await Quiz.findById(quizId);
+        if (quiz) {
+            return res.status(200).json(quiz);
+        }
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+}
+
+module.exports = { newQuiz, getAllQuizzes, getSingleQuiz };
