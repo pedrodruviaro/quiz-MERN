@@ -30,6 +30,12 @@ const QuizSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        author: {
+            type: String,
+            required: true,
+            min: 6,
+            max: 200,
+        },
     },
     { timestamps: true }
 );
