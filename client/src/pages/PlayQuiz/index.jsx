@@ -2,18 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Loader } from "../../styles/Loader";
 import { Container } from "../../styles/Container";
-import { Button } from "../../styles/Button";
-import moment from "moment";
+import PlayQuiz from "../../components/PlayQuiz";
 import api from "../../services/api";
+import PlayQuizContextProvider from "../../contexts/playQuizContext";
 
 export default function Index() {
     const idParam = useParams().id;
     const [quiz, setQuiz] = useState([]);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
-
-    // stepper
-    const [stepper, setStepper] = useState(0);
 
     useEffect(() => {
         (async () => {
@@ -36,12 +33,6 @@ export default function Index() {
         };
     }, [idParam]);
 
-    // useEffect(() => {
-    //     if (!loading && stepper <= quiz.questions.length - 1) {
-    //         console.log(quiz.questions[stepper]);
-    //     }
-    // }, [stepper, quiz, loading]);
-
     if (error) return <h1>Quiz not found!</h1>;
 
     if (loading)
@@ -53,19 +44,9 @@ export default function Index() {
 
     return (
         <Container>
-            <div>
-                <h1>{quiz.title}</h1>
-                <p>{quiz.description}</p>
-                <p>{quiz.category}</p>
-                <p>{moment(quiz.createdAt).format("MMM Do YYYY")}</p>
-                <p>{quiz.author}</p>
-            </div>
-
-            <section></section>
-
-            <Button>Play Quiz!</Button>
-
-            <button onClick={() => setStepper((prev) => prev + 1)}>NEXT</button>
+            <PlayQuizContextProvider>
+                <PlayQuiz quiz={quiz} />
+            </PlayQuizContextProvider>
         </Container>
     );
 }
