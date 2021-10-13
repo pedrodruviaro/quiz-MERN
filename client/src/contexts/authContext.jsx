@@ -52,6 +52,7 @@ export default function AuthContextProvider({ children }) {
         }
     }
 
+    // logout a user and removing token
     async function logoutUser() {
         setAuthorized(false);
         setUser(null);
@@ -60,9 +61,16 @@ export default function AuthContextProvider({ children }) {
         history.push("/");
     }
 
+    // registering a new user
+    async function registerUser() {
+        // chamada p/ api inserindo o novo usuario
+        // se 200 => funcao de login passando email e senha (loginUser(credentials))
+        // email, username, password => {...}
+    }
+
     return (
         <AuthContext.Provider
-            value={{ user, authorized, loginUser, logoutUser }}
+            value={{ user, authorized, loginUser, logoutUser, registerUser }}
         >
             {children}
         </AuthContext.Provider>

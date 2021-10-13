@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function styles() {
+export default function Index() {
     return (
         <div>
             <h1>Register page</h1>

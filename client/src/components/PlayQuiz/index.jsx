@@ -39,12 +39,14 @@ export default function Index({ quiz }) {
 
     return (
         <div>
-            <h1>{quiz.title}</h1>
-            <p>{quiz.description}</p>
-            <p>{quiz.category}</p>
-            <p>{moment(quiz.createdAt).format("MMM Do YYYY")}</p>
-            <p>{quiz.author}</p>
-            <h2>{quiz.questions[stepper].label}</h2>
+            <header>
+                <h1>{quiz.title}</h1>
+                <p>{quiz.description}</p>
+                <p>{quiz.category}</p>
+                <p>{moment(quiz.createdAt).format("MMM Do YYYY")}</p>
+                <p>{quiz.author}</p>
+                <h2>{quiz.questions[stepper].label}</h2>
+            </header>
 
             <div>
                 <Alternative
