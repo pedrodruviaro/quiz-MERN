@@ -18,7 +18,7 @@ export default function Index() {
         (async () => {
             if (user) {
                 try {
-                    const { data } = await api.get("/api/quiz");
+                    const { data } = await api.get("/api/quiz/all");
                     if (data) {
                         setQuizzes(data);
                         setLoading(false);

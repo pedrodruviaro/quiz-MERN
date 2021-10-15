@@ -16,7 +16,7 @@ export default function Index() {
         (async () => {
             try {
                 const quizId = idParam;
-                const { data } = await api.get(`/api/quiz/play/${quizId}`);
+                const { data } = await api.get(`/api/quiz/${quizId}`);
                 console.log(data);
                 setQuiz(data[0]);
                 setLoading(false);

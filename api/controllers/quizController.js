@@ -74,4 +74,19 @@ async function getSingleQuiz(req, res) {
     }
 }
 
-module.exports = { newQuiz, getAllQuizzes, getSingleQuiz };
+// updating a quiz
+async function updateQuiz(req, res) {
+    const quizId = req.params.id;
+    const userId = req.user.userId;
+
+    const quiz = await Quiz.findOne({ _id: quizId });
+    if (!quiz) return res.status(404).json("Quiz not found!");
+    if (quiz.userId !== userId) {
+        return res.status(403).json("You can only update your own quizzes!");
+    }
+
+    await quiz.updateOne({ $set: req.body });
+    res.status(200).send("All good");
+}
+
+module.exports = { newQuiz, getAllQuizzes, getSingleQuiz, updateQuiz };
