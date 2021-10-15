@@ -63,13 +63,15 @@ export const QuizCardPreview = styled.article`
     > footer {
         display: flex;
         align-items: center;
+        flex-direction: column;
         gap: 1rem;
+        width: 100%;
 
         > div {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
         }
     }
 `;

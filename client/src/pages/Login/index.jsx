@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function Login() {
-    const [email, setEmail] = useState("mariobros@gmail.com");
-    const [password, setPassword] = useState("mariobros");
+    const [email, setEmail] = useState("pedrodruviaro@gmail.com");
+    const [password, setPassword] = useState("pedrodruviaro");
     const [error, setError] = useState("");
 
     // useAuth

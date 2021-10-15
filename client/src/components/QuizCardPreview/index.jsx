@@ -1,8 +1,11 @@
 import { QuizCardPreview } from "./styles";
 import { Button } from "../../styles/Button";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 
 export default function Index({ quiz }) {
+    const history = useHistory();
+
     return (
         <QuizCardPreview>
             <header>
@@ -18,9 +21,17 @@ export default function Index({ quiz }) {
             <footer>
                 <div>
                     <span>Questions: {quiz.questions.length}</span>
-                    <span>{quiz.deployed ? "Deployed" : "Not finished"}</span>
+                    <span>{quiz.deployed ? "Finished!" : "Not finished"}</span>
                 </div>
-                <Button>Play/Edit</Button>
+                <div>
+                    <Button
+                        variant="secondary"
+                        onClick={() => history.push(`/play/${quiz._id}`)}
+                    >
+                        Play
+                    </Button>
+                    <Button>Edit</Button>
+                </div>
             </footer>
         </QuizCardPreview>
     );

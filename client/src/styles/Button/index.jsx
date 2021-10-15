@@ -4,7 +4,10 @@ export const Button = styled.button`
     border: none;
     outline: none;
     padding: 0.5em 1em;
-    background-color: ${(props) => props.theme.accent};
+    background-color: ${(props) =>
+        props.variant === "secondary"
+            ? "lightcoral"
+            : (props) => props.theme.accent};
     color: ${(props) => props.theme.light};
     font-size: 1rem;
     font-weight: 600;

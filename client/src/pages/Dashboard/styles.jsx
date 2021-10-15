@@ -4,7 +4,7 @@ export const DashboardQuizList = styled.div`
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
-    gap: 1.5rem;
+    gap: 3rem;
 `;
